@@ -49,8 +49,7 @@ int main() {
     scanf("%d", &arr[i]);
   }
 
-  while (scanf("%d", &x) != EOF) {
-    printf("%d\n", x);
+  while (scanf("%d\n", &x) != EOF) {
 
     pos = binarySearch(arr, n, x);
     if (pos != -1) {
