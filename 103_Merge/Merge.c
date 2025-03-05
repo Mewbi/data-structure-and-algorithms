@@ -7,17 +7,20 @@ void printArr(int *arr, int n) {
   }
 }
 
-void intercala(int *arr, int left, int mid, int right)  {
-  int i = left;
-  int j = mid;
+void intercala(int *arr, int s_left, int s_right, int e_right)  {
+
+  int e_left = s_right - 1;
+
+  int i = s_left;
+  int j = s_right;
+
   int k = 0;
-  int size = right - left + 1;
   int *tmp;
 
-  tmp = (int*) malloc(size * sizeof(int));
+  tmp = (int*) malloc((e_right - s_left + 1) * sizeof(int));
 
-  while (i < mid && j < right) {
-    if (arr[i] < arr[j]) {
+  while (i <= e_left && j <= e_right) {
+    if (arr[i] <= arr[j]) {
       tmp[k] = arr[i];
       i++;
     } else {
@@ -27,23 +30,23 @@ void intercala(int *arr, int left, int mid, int right)  {
     k++;
   }
 
-  while (i < mid) {
+  while (i <= e_left) {
     tmp[k] = arr[i];
     i++;
     k++;
   }
 
-  while (j < mid) {
+  while (j < e_right) {
     tmp[k] = arr[j];
     j++;
     k++;
   }
 
-  printf("TMP: ");
-  printArr(tmp, size);
-  for (int t = 0, t2 = left; t < k; t++, t2++) {
-    arr[t2] = tmp[t];
+  //printArr(tmp, k);
+  for (int t = 0; t < k; t++) {
+    arr[s_left + t] = tmp[t];
   }
+
   free(tmp);
 }
 
@@ -51,15 +54,17 @@ void mergeSort(int *arr, int left, int right, int n) {
 
   int mid;
 
-  while (left < mid) {
+  if (left < right) {
     mid = (left + right) / 2;
     mergeSort(arr, left, mid, n);
     mergeSort(arr, mid+1, right, n);
 
-    printf("left %d mid %d right %d\n", left, mid, right);
-    printf("ARR: ");
+    //printf("left %d mid %d right %d\n", left, mid, right);
+    // printf("ARR ANTES: ");
     printArr(arr, n);
     intercala(arr, left, mid+1, right);
+    // printf("ARR DPS: ");
+    // printArr(arr, n);
   }
 
 }
@@ -75,7 +80,8 @@ int main() {
   }
 
   printArr(arr, n);
-  mergeSort(arr, 0, n, n);
+  mergeSort(arr, 0, n-1, n);
+  printArr(arr, n);
 
   return 0;
 }
