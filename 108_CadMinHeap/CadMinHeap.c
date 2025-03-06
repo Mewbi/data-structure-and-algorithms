@@ -52,7 +52,7 @@ void peneirar(Heap *h, int p) {
 }
 
 void buildHeap(Heap *h) {
-  for (int i = ultimoPai(h->size); i >= 0; i--) {
+  for (int i = ultimoPai(h->qtd); i >= 0; i--) {
     peneirar(h, i);
   }
 }
@@ -63,7 +63,7 @@ void insertHeap(Heap *h, long int n) {
     h->items[idx] = n;
     h->qtd++;
 
-    if (h->items[idx] > h->items[pai(idx)]) {
+    if (h->items[idx] < h->items[pai(idx)]) {
       buildHeap(h);
     }
   }
@@ -111,7 +111,7 @@ int main() {
       case 'R':
         x = removeHeap(&h);
         if (x != -1) {
-          printf("%d\n", x);
+          printf("%ld\n", x);
         }
         break;
     }

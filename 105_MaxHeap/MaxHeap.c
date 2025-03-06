@@ -74,6 +74,8 @@ int main() {
   Heap h;
 
   scanf("%d", &n);
+
+
   while (n != 0) {
     h = NewHeap(n);
     for (int i = 0; i < n; i++) {
@@ -84,6 +86,7 @@ int main() {
     printHeap(&h);
 
     scanf("%d", &n);
+    free(h.items);
   }
 
   return 0;
