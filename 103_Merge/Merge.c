@@ -42,7 +42,6 @@ void intercala(int *arr, int s_left, int s_right, int e_right)  {
     k++;
   }
 
-  //printArr(tmp, k);
   for (int t = 0; t < k; t++) {
     arr[s_left + t] = tmp[t];
   }
@@ -59,12 +58,8 @@ void mergeSort(int *arr, int left, int right, int n) {
     mergeSort(arr, left, mid, n);
     mergeSort(arr, mid+1, right, n);
 
-    //printf("left %d mid %d right %d\n", left, mid, right);
-    // printf("ARR ANTES: ");
     printArr(arr, n);
     intercala(arr, left, mid+1, right);
-    // printf("ARR DPS: ");
-    // printArr(arr, n);
   }
 
 }
