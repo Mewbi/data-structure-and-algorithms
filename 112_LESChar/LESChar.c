@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 typedef struct {
-  int *items;
+  char *items;
   int size;
   int qtd;
 } List;
@@ -10,7 +10,7 @@ typedef struct {
 List NewList(int n) {
   List l;
 
-  l.items = (int*) malloc(n * sizeof(int));
+  l.items = (char*) malloc(n * sizeof(char));
   l.size = n;
   l.qtd = 0;
 
@@ -25,7 +25,7 @@ int isEmpty(List l) {
   return l.qtd == 0;
 }
 
-int searchList(List l, int n) {
+int searchList(List l, char n) {
 
   for (int i = 0; i < l.qtd; i++) {
     if (l.items[i] == n) {
@@ -38,11 +38,11 @@ int searchList(List l, int n) {
 
 void printList(List l) {
   for (int i = 0; i < l.qtd; i++) {
-    printf("%d%c", l.items[i], i < l.qtd -1 ? ' ': '\n');
+    printf("%c%c", l.items[i], i < l.qtd -1 ? ' ': '\n');
   }
 }
 
-void insertList(List *l, int v) {
+void insertList(List *l, char v) {
   if (isFull(*l)) return;
 
   if (searchList(*l, v) != -1) return;
@@ -62,7 +62,7 @@ void insertList(List *l, int v) {
   return;
 }
 
-void removeList(List *l, int v) {
+void removeList(List *l, char v) {
   if (isEmpty(*l)) return;
 
   int idx = searchList(*l, v);
@@ -79,7 +79,8 @@ void removeList(List *l, int v) {
 }
 
 int main() {
-  int n, v, res;
+  int n, res;
+  char v;
   char opc;
   List l;
 
@@ -89,7 +90,7 @@ int main() {
   while (scanf("%c", &opc) != EOF) {
     switch (opc) {
       case 'I':
-        scanf("%d", &v);
+        scanf(" %c", &v);
         insertList(&l, v);
         break;
 
@@ -98,12 +99,12 @@ int main() {
         break;
 
       case 'R':
-        scanf("%d", &v);
+        scanf(" %c", &v);
         removeList(&l, v);
         break;
       
       case 'B':
-        scanf("%d", &v);
+        scanf(" %c", &v);
         if (searchList(l, v) != -1) {
           printf("SIM\n");
         } else {

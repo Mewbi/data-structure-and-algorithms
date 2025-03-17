@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 typedef struct {
-  int *items;
+  float *items;
   int size;
   int qtd;
 } List;
@@ -10,7 +10,7 @@ typedef struct {
 List NewList(int n) {
   List l;
 
-  l.items = (int*) malloc(n * sizeof(int));
+  l.items = (float*) malloc(n * sizeof(float));
   l.size = n;
   l.qtd = 0;
 
@@ -25,7 +25,7 @@ int isEmpty(List l) {
   return l.qtd == 0;
 }
 
-int searchList(List l, int n) {
+int searchList(List l, float n) {
 
   for (int i = 0; i < l.qtd; i++) {
     if (l.items[i] == n) {
@@ -37,12 +37,18 @@ int searchList(List l, int n) {
 }
 
 void printList(List l) {
+  float v;
   for (int i = 0; i < l.qtd; i++) {
-    printf("%d%c", l.items[i], i < l.qtd -1 ? ' ': '\n');
+    v = l.items[i];
+    if (v == (int)v) {
+        printf("%.0f%c", v, i < l.qtd -1 ? ' ': '\n');
+    } else {
+        printf("%.1f%c", v, i < l.qtd -1 ? ' ': '\n');
+    }
   }
 }
 
-void insertList(List *l, int v) {
+void insertList(List *l, float v) {
   if (isFull(*l)) return;
 
   if (searchList(*l, v) != -1) return;
@@ -62,7 +68,7 @@ void insertList(List *l, int v) {
   return;
 }
 
-void removeList(List *l, int v) {
+void removeList(List *l, float v) {
   if (isEmpty(*l)) return;
 
   int idx = searchList(*l, v);
@@ -79,7 +85,8 @@ void removeList(List *l, int v) {
 }
 
 int main() {
-  int n, v, res;
+  int n, res;
+  float v;
   char opc;
   List l;
 
@@ -89,7 +96,7 @@ int main() {
   while (scanf("%c", &opc) != EOF) {
     switch (opc) {
       case 'I':
-        scanf("%d", &v);
+        scanf("%f", &v);
         insertList(&l, v);
         break;
 
@@ -98,12 +105,12 @@ int main() {
         break;
 
       case 'R':
-        scanf("%d", &v);
+        scanf("%f", &v);
         removeList(&l, v);
         break;
       
       case 'B':
-        scanf("%d", &v);
+        scanf("%f", &v);
         if (searchList(l, v) != -1) {
           printf("SIM\n");
         } else {

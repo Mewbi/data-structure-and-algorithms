@@ -1,0 +1,33 @@
+10
+I mula
+I rato
+I foca
+I boto
+I pato
+I mula
+I tatu
+I burro
+I zebra
+I anta
+I foca
+I gato
+M
+B foca
+B tigre
+B onca
+B leao
+B gato
+B pato
+R mula
+R rato
+R burro
+M
+B mula
+B rato
+B burro
+B boto
+R zebra
+R anta
+R leao
+R onca
+M

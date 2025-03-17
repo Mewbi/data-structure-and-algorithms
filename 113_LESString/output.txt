@@ -1,0 +1,13 @@
+anta boto burro foca gato mula pato rato tatu zebra
+SIM
+NAO
+NAO
+NAO
+SIM
+SIM
+anta boto foca gato pato tatu zebra
+NAO
+NAO
+NAO
+SIM
+boto foca gato pato tatu

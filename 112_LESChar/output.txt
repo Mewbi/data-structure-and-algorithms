@@ -1,0 +1,13 @@
+A B D H K L S Y Z
+SIM
+SIM
+NAO
+SIM
+NAO
+NAO
+A B D L Y Z
+NAO
+NAO
+NAO
+NAO
+B D L Y

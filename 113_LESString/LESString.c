@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct {
-  int *items;
+  char **items;
   int size;
   int qtd;
 } List;
@@ -10,7 +11,7 @@ typedef struct {
 List NewList(int n) {
   List l;
 
-  l.items = (int*) malloc(n * sizeof(int));
+  l.items = (char**) malloc(n * sizeof(char*));
   l.size = n;
   l.qtd = 0;
 
@@ -25,10 +26,10 @@ int isEmpty(List l) {
   return l.qtd == 0;
 }
 
-int searchList(List l, int n) {
+int searchList(List l, char *n) {
 
   for (int i = 0; i < l.qtd; i++) {
-    if (l.items[i] == n) {
+    if ( strcmp(l.items[i], n) == 0 ) {
       return i;
     }
   }
@@ -38,17 +39,17 @@ int searchList(List l, int n) {
 
 void printList(List l) {
   for (int i = 0; i < l.qtd; i++) {
-    printf("%d%c", l.items[i], i < l.qtd -1 ? ' ': '\n');
+    printf("%s%c", l.items[i], i < l.qtd -1 ? ' ': '\n');
   }
 }
 
-void insertList(List *l, int v) {
+void insertList(List *l, char *v) {
   if (isFull(*l)) return;
 
   if (searchList(*l, v) != -1) return;
 
   int i = 0;
-  while (l->items[i] < v && i < l->qtd) {
+  while (i < l->qtd && strcmp(l->items[i], v) < 0) {
     i++;
   }
 
@@ -62,7 +63,7 @@ void insertList(List *l, int v) {
   return;
 }
 
-void removeList(List *l, int v) {
+void removeList(List *l, char *v) {
   if (isEmpty(*l)) return;
 
   int idx = searchList(*l, v);
@@ -79,7 +80,8 @@ void removeList(List *l, int v) {
 }
 
 int main() {
-  int n, v, res;
+  int n, res;
+  char *v;
   char opc;
   List l;
 
@@ -89,7 +91,8 @@ int main() {
   while (scanf("%c", &opc) != EOF) {
     switch (opc) {
       case 'I':
-        scanf("%d", &v);
+        v = (char*) malloc(1010 * sizeof(char));
+        scanf(" %s", v);
         insertList(&l, v);
         break;
 
@@ -98,12 +101,14 @@ int main() {
         break;
 
       case 'R':
-        scanf("%d", &v);
+        v = (char*) malloc(1010 * sizeof(char));
+        scanf(" %s", v);
         removeList(&l, v);
         break;
       
       case 'B':
-        scanf("%d", &v);
+        v = (char*) malloc(1010 * sizeof(char));
+        scanf(" %s", v);
         if (searchList(l, v) != -1) {
           printf("SIM\n");
         } else {
