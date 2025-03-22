@@ -1,0 +1,6 @@
+5
+1 mario mariokart 5.0
+2 luigi luigikart 3.0
+3 yoshi mariokart 2.0
+4 peach princesskart 4.0
+5 toad princesskart 1.0
