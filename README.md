@@ -24,6 +24,22 @@ These exercises help in understanding the basics of C syntax, data types, loops,
 - 🏔️ Min Heap & Max Heap
 - 📊 Heap Sort
 
+### 📋 Static List & Stack (110 - 118)
+
+- 📄 Static List Implementation
+- 📦 Stack (Push, Pop, Peek)
+
+
+### 📝 Exam 1 Exercises (119 - 124)
+
+- 📖 Exercises of the first exam
+- 🎯 Focus on problem-solving and algorithm optimization
+
+### 🔃 Queue & Circular Queue (125 - 132)
+
+-🚶‍♂️ Queue Implementation (Enqueue, Dequeue)
+- 🔁 Circular Queue for efficient memory usag
+
 ## 📜 How to Use
 
 1. Clone the repository:
