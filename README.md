@@ -37,7 +37,7 @@ These exercises help in understanding the basics of C syntax, data types, loops,
 
 ### 🔃 Queue & Circular Queue (125 - 132)
 
--🚶‍♂️ Queue Implementation (Enqueue, Dequeue)
+- 🚶‍♂️ Queue Implementation (Enqueue, Dequeue)
 - 🔁 Circular Queue for efficient memory usag
 
 ## 📜 How to Use
