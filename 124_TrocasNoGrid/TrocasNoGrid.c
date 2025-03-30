@@ -1,21 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int bubbleSort(double *arr, int n) {
-  int qtd = 0;
-  double aux;
-  for (int i = 0; i < n; i++) {
-    for (int  j = 0; j < n-(i+1); j++) {
-      if (arr[j] > arr[j+1]) {
-        aux = arr[j];
-        arr[j] = arr[j+1];
-        arr[j+1] = aux;
-        qtd++;
-      }
+// Merge and count inversions
+void mergeAndCount(double arr[], double temp[], int left, int mid, int right, int *count) {
+  int i = left, j = mid + 1, k = left;
+  int invCount = 0;
+
+  while (i <= mid && j <= right) {
+    if (arr[i] <= arr[j]) {
+      temp[k++] = arr[i++];
+    } else {
+      temp[k++] = arr[j++];
+      invCount += (mid - i + 1);  // Count inversions
     }
   }
 
-  return qtd;
+  while (i <= mid) temp[k++] = arr[i++];
+  while (j <= right) temp[k++] = arr[j++];
+
+  for (i = left; i <= right; i++) arr[i] = temp[i];
+
+  *count += invCount;
+  return;
+}
+
+
+void mergeSortAndCount(double *arr, double *temp, int left, int right, int *count) {
+  if (left < right) {
+    int mid = (left + right) / 2;
+    mergeSortAndCount(arr, temp, left, mid, count);
+    mergeSortAndCount(arr, temp, mid + 1, right, count);
+    mergeAndCount(arr, temp, left, mid, right, count);
+  }
+  return;
+}
+
+int countSwaps(double *arr, int n) {
+  double *temp = (double *)malloc(n * sizeof(double));
+  int count = 0;
+  mergeSortAndCount(arr, temp, 0, n - 1, &count);
+  free(temp);
+  return count;
 }
 
 int main() {
@@ -32,7 +57,7 @@ int main() {
     scanf("%d %s %s %lf", &carNum, name, team, &arr[i]);
   }
 
-  res = bubbleSort(arr, n);
+  res = countSwaps(arr, n);
   
   printf("%d\n", res);
 
