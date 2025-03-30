@@ -29,7 +29,6 @@ These exercises help in understanding the basics of C syntax, data types, loops,
 - 📄 Static List Implementation
 - 📦 Stack (Push, Pop, Peek)
 
-
 ### 📝 Exam 1 Exercises (119 - 124)
 
 - 📖 Exercises of the first exam
@@ -39,6 +38,13 @@ These exercises help in understanding the basics of C syntax, data types, loops,
 
 - 🚶‍♂️ Queue Implementation (Enqueue, Dequeue)
 - 🔁 Circular Queue for efficient memory usag
+
+### 📂 Linked List (133 - 141)
+
+- ➕ Adding at Head
+- ➖ Adding at Tail
+- ↦ Adding in the Middle
+- ⭯️ Reversing a Linked List
 
 ## 📜 How to Use
 
