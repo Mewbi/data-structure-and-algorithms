@@ -77,7 +77,6 @@ void printListLastFirst(List *l) {
 }
 
 void insertList(List *l, Item *it) {
-  if (search(l, it->value) != NULL) return;
   Item *prev = NULL, *actual = first(l);
 
   while(actual != NULL && actual->value < it->value) {
