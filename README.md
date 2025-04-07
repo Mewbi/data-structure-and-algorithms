@@ -46,6 +46,15 @@ These exercises help in understanding the basics of C syntax, data types, loops,
 - ↦ Adding in the Middle
 - ⭯️ Reversing a Linked List
 
+### 🔄 Dynamic Stack & Queue (141 - 147)
+
+- 🔁 Dynamic Queue Implementation
+- 🌀 Dynamic Stack Implementation
+
+### 🪢 Doubly Linked List (148 - 149)
+
+- ↔️ Inserting and deleting nodes in both directions
+
 ## 📜 How to Use
 
 1. Clone the repository:

@@ -34,7 +34,7 @@ A [I M] - 13: 1, 2
 #include <stdlib.h>
 
 typedef struct Item {
-  chat value;
+  char value;
   struct Item *next;
 } Item;
 
@@ -66,7 +66,7 @@ int isEmpty(List *l) {
 void printList(List *l) {
   Item *it = l->first;
   while (it != NULL) {
-    printf("%d%c", it->value, it->next != NULL ? ' ' : '\n');
+    printf("%c%c", it->value, it->next != NULL ? ' ' : '\n');
     it = it->next;
   }
 }
@@ -99,13 +99,13 @@ Item* removeList(List *l, int pos) {
 
   l->length--;
   // removing from beginning
-  if (actual->value == v && prev == NULL) {
+  if (prev == NULL) {
     l->first = actual->next;
     return actual;
   }
 
   // removing from middle
-  if (actual->value == v && prev != NULL) {
+  if (prev != NULL) {
     prev->next = actual->next;
     return actual;
   }
@@ -119,26 +119,27 @@ Item* removeList(List *l, int pos) {
 }
 
 int main() {
-  int n, v;
-  char opc;
+  int n = 16, team1, team2, pos = 0;
+  char teams[16] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'};
 
   List *l = newList();
-  insert(l, newItem('A'));
-  insert(l, newItem('B'));
-  insert(l, newItem('C'));
-  insert(l, newItem('D'));
-  insert(l, newItem('E'));
-  insert(l, newItem('F'));
-  insert(l, newItem('G'));
-  insert(l, newItem('H'));
-  insert(l, newItem('I'));
-  insert(l, newItem('J'));
-  insert(l, newItem('K'));
-  insert(l, newItem('L'));
-  insert(l, newItem('M'));
-  insert(l, newItem('N'));
-  insert(l, newItem('O'));
-  insert(l, newItem('P'));
+  for (int i = 0; i < n; i++) {
+    insert(l, newItem(teams[i]));
+  }
+
+  for (int i = 0; i < n-1; i++) {
+    if (pos >= l->length) pos = 0;
+
+    scanf("%d %d", &team1, &team2);
+    if (team1 < team2) {
+      removeList(l, pos);
+    } else {
+      removeList(l, pos + 1);
+    }
+    pos++;
+  }
+
+  printf("%c\n", l->first->value);
 
   return 0;
 }
